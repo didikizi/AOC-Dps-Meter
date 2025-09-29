@@ -1,6 +1,6 @@
 # AOC DPS Meter
 
-A real-time DPS (Damage Per Second) meter for Ashes of Creation game. This tool analyzes combat logs to provide detailed statistics about your performance in battles.
+A Damage meter for Ashes of Creation game. This tool analyzes combat logs to provide detailed statistics about your performance in battles.
 
 ![AOC DPS Meter](screenshots/main-interface.png)
 
