@@ -39,18 +39,13 @@ If this project reaches 50 stars, I plan to add:
 
 ## 📥 Installation
 
-### Option 1: Download Pre-built Binary (Recommended)
-
-1. Go to [Releases](https://github.com/didikizi/AOCDpsMetr/releases)
-2. Download the latest `aocdpsmetr.exe` for Windows
-3. Run the executable
-
-### Option 2: Build from Source
+### Build from Source
 
 #### Prerequisites
 - Go 1.24.5 or later
 - Node.js (for frontend)
 - Wails v2
+- Git
 
 #### Build Steps
 
@@ -71,6 +66,18 @@ wails build
 ```
 
 The executable will be created in the `build/bin/` directory.
+
+#### Development Mode
+To run the application in development mode with hot reload:
+```bash
+wails dev
+```
+
+#### Troubleshooting Build Issues
+- Make sure Go is properly installed and in your PATH
+- Ensure Wails is installed correctly: `wails doctor`
+- Check that Node.js is installed for frontend dependencies
+- On Windows, you may need Visual Studio Build Tools
 
 ## 🎮 Usage
 
