@@ -1,0 +1,23 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "aocdpsmetr",
+  "outputfilename": "aocdpsmetr",
+  "author": {
+    "name": "vadem",
+    "email": "vadem@example.com"
+  },
+  "info": {
+    "productName": "AOC DPS Meter",
+    "productVersion": "1.0.0",
+    "copyright": "Copyright.........",
+    "comments": "DPS meter for Ashes of Creation"
+  },
+  "nsisType": "multiple",
+  "obfuscated": false,
+  "wailsjsdir": "./frontend/wailsjs",
+  "frontend:dir": "./frontend",
+  "frontend:install": "cmd /c echo No frontend dependencies",
+  "frontend:build": "cmd /c echo Frontend build complete",
+  "frontend:dev:watcher": "cmd /c echo Dev watcher",
+  "frontend:dev:serverUrl": "http://localhost:34115"
+}

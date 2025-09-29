@@ -1,0 +1,12 @@
+{
+  "name": "aocdpsmetr-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for AOC DPS Meter",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Frontend build complete'",
+    "dev": "echo 'Dev watcher'"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

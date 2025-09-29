@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOC DPS Meter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>AOC DPS Meter</h1>
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary">Start Monitoring</button>
+                <button id="stopBtn" class="btn btn-secondary" disabled>Stop Monitoring</button>
+                <button id="resetBtn" class="btn btn-danger">Reset Stats</button>
+                <button id="debugBtn" class="btn btn-info">Debug Info</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Общая статистика -->
+            <section class="stats-section">
+                <h2>Combat Statistics</h2>
+                <div class="stats-grid">
+                    <!-- Первая строка: DPS статистика -->
+                    <div class="stat-card">
+                        <div class="stat-label">Max DPS</div>
+                        <div class="stat-value" id="maxDps">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">DPS</div>
+                        <div class="stat-value" id="dps">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Total Damage</div>
+                        <div class="stat-value" id="damage">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Hits</div>
+                        <div class="stat-value" id="hits">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Crits</div>
+                        <div class="stat-value" id="crits">0</div>
+                    </div>
+                    
+                    <!-- Вторая строка: HPS статистика -->
+                    <div class="stat-card">
+                        <div class="stat-label">Max HPS</div>
+                        <div class="stat-value" id="maxHps">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">HPS</div>
+                        <div class="stat-value" id="hps">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Total Healing</div>
+                        <div class="stat-value" id="healing">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Healing Hits</div>
+                        <div class="stat-value" id="healingHits">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Healing Crits</div>
+                        <div class="stat-value" id="healingCrits">0</div>
+                    </div>
+                    
+                    <!-- Третья строка: остальная статистика -->
+                    <div class="stat-card">
+                        <div class="stat-label">Crit Rate</div>
+                        <div class="stat-value" id="critRate">0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Healing Crit Rate</div>
+                        <div class="stat-value" id="healingCritRate">0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Kills</div>
+                        <div class="stat-value" id="kills">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Duration</div>
+                        <div class="stat-value" id="duration">0s</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Статистика по способностям -->
+            <section class="abilities-section">
+                <div class="section-header">
+                    <h2>Abilities</h2>
+                    <button class="collapse-btn" id="collapseAbilitiesBtn" title="Свернуть/развернуть">
+                        <span class="collapse-icon">▼</span>
+                    </button>
+                </div>
+                <div class="table-container" id="abilitiesContainer">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-column="name">Ability <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="damage">Damage <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="healing">Healing <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="hits">Hits <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="crits">Crits <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="critRate">Crit Rate <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="healingHits">Healing Hits <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="healingCrits">Healing Crits <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="healingCritRate">Healing Crit Rate <span class="sort-indicator">↕</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="abilitiesTable">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Статистика по целям -->
+            <section class="targets-section">
+                <div class="section-header">
+                    <h2>Targets</h2>
+                    <button class="collapse-btn" id="collapseTargetsBtn" title="Свернуть/развернуть">
+                        <span class="collapse-icon">▼</span>
+                    </button>
+                </div>
+                <div class="table-container" id="targetsContainer">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-column="name">Target <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="damage">Damage <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="healing">Healing <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="hits">Hits <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="crits">Crits <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="critRate">Crit Rate <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="kills">Kills <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="healingHits">Healing Hits <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="healingCrits">Healing Crits <span class="sort-indicator">↕</span></th>
+                                <th class="sortable" data-column="healingCritRate">Healing Crit Rate <span class="sort-indicator">↕</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="targetsTable">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="status">
+                <span id="statusText">Ready to start monitoring</span>
+            </div>
+            <div class="debug-panel" id="debugPanel" style="display: none;">
+                <h3>Debug Information</h3>
+                <div id="debugContent"></div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
