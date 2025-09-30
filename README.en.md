@@ -13,8 +13,6 @@ A Damage meter for Ashes of Creation game. This tool analyzes combat logs to pro
 - **Real-time log monitoring may be subject to restrictions under the game’s policies; we recommend using this tool primarily for post-combat log analysis**
 - **The developers provide this project “as is” and assume no responsibility for any consequences resulting from its use**
 
-📩 Контакты: [vadim.korolev.2002@internet.ru](mailto:vadim.korolev.2002@internet.ru)
-
 ## 🚀 Features
 
 - **Real-time DPS/HPS tracking** - Monitor your damage and healing per second
